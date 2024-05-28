@@ -14,8 +14,19 @@ const petList = {
 
 // 2. Crear las rutas con el router
 
+/* QUERY */
+// Query URL: /api/v1/pets?age=6&type=dog
+// Son similares a Params, pero se suelen usar para filtrar o buscar información. Sobre todo para mandar más de un dato.
+// Las Querys son abiertas, no definimos cuántas ni cuáles van a venir.
+// La responsabilidad del backend es SOLO tomar en cuenta las querys que le interesan.
+
 router.get('/api/v1/pets', (req, res) => {
-    res.send(petList);
+    const { age, type } = req.query;
+
+    const filteredPets = petList.pets.filter(pet => {
+        return (age ? pet.age === parseInt(age) : true) && (type ? pet.type === type : true);
+    });
+    res.send(filteredPets);
 });
 
 /* PARAMS */
