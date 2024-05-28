@@ -18,5 +18,19 @@ router.get('/api/v1/pets', (req, res) => {
     res.send(petList);
 });
 
+/* PARAMS */
+// Obtener parámetros de la URL (dinámicos)
+// Params: /api/v1/pets/:petId
+// Los : en la ruta quiere decir que es un PARAM, y su valor es dinámico.
+router.get('/api/v1/pets/:petId', (req, res) => {
+    // console.log(req.params.petId);
+    // Recorrer el arreglo de pets y devolver la pet que coincida con el id
+    const onePet = petList.pets.find(pet => pet.id === parseInt(req.params.petId));
+    // Si la id del pet existe, devolvera un objeto (truthy), si no existe devolvera undefined (falsy)
+    onePet
+      ? res.status(200).send(onePet)
+      : res.status(404).send({ message: 'Pet not found' });
+});
+
 // 3. Exportar el router
 module.exports = router;
