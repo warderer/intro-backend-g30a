@@ -1,6 +1,7 @@
 // #1 Llamar a la biblioteca de express (importarla)
 const express = require('express');
 const petsRouter = require('./api/v1/pets');
+const pokemonsRouter = require('./api/v1/pokemons');
 
 // #2 Crear y configurar una aplicación (instancia) de express
 const app = express();
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(petsRouter); // Importar las rutas de pets para ser usadas en el servidor.
+app.use(pokemonsRouter);
 
 // #4 Levantar el servidor en un puerto, por ejemplo el 3000.
 app.listen(3000, () => {
