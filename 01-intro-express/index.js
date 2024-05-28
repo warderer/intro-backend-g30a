@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true })); // Esto sirve para que express 
 
 // #3 Crear o definir las rutas de mi servidor. (Endpoints)
 app.get('/', (req, res) => {
-  res.send({ mensaje: 'Hola mundo' });
+  res.send({ mensaje: 'Hola Devf' });
 });
 
 // #4 Levantar el servidor en un puerto, por ejemplo el 3000.
