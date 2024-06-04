@@ -14,7 +14,15 @@ const create = (bodyHome) => {
     .returning(['house_id', 'title', 'description', 'guest', 'address', 'rental_price', 'active', 'created_at']) // ¿Qué quiero que me devuelva? - Todos los campos de la tabla homes.
 }
 
+const findAll = () => {
+  return knex
+    .select('*') // * equivale a todos los campos de la tabla.
+    .from('homes')
+    .where('active', true) // traemos solo los campos que no hayamos hecho soft delete.
+}
+
 // Paso #3 Exportar mis funciones para que sean accesibles desde el controlador.
 module.exports = {
-  create
+  create,
+  findAll
 }
