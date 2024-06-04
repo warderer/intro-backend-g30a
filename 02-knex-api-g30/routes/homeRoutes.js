@@ -6,6 +6,7 @@ const homeController = require('../controllers/homeControllers')
 // 2. Crear las rutas con el router
 router.post('/homes', homeController.createHome)
 router.get('/homes', homeController.findAllHomes)
+router.get('/homes/:idHome', homeController.findOneHome)
 
 // 3. Exportar el router
 module.exports = router
